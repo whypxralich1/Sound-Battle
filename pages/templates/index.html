@@ -23,7 +23,7 @@
                         <h5 class="card-title text-primary">{{ track.title }}</h5>
                         <p class="card-text text-muted">Исполнитель: <strong>{{ track.artist }}</strong></p>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-outline-primary btn-sm">Выбрать для битвы</button>
+                            <a href="{% url 'track_detail' track.pk %}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                         </div>
                     </div>
                 </div>
