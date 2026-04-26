@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Track
+from .forms import FeedbackForm
 
 def index(request):
     tracks = Track.objects.all()
@@ -19,3 +20,13 @@ def track_detail(request, pk):
         'track': track
     }
     return render(request, 'track_detail.html', context)
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return redirect('home')
+    else:
+        form = FeedbackForm()
+    return render(request, 'contact.html', {'form': form})
